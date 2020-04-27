@@ -4,8 +4,8 @@ using System.Text;
 
 namespace UnitTestingExamplesCore_KarieraIT
 {
-    public interface IService
+    public interface IRandomService
     {
-        double Calculate(double inputValue, IRandomService randomService);
+        double GetRandomValue();
     }
 }
