@@ -2,11 +2,13 @@
 
 namespace UnitTestingExamplesCore_KarieraIT
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static IService Service { get; set; }
+        public static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Service = new Service();
+            Console.WriteLine(Service.Calculate(19.93));
         }
     }
 }
