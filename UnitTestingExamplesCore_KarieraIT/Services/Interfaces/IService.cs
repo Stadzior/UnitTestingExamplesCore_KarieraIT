@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace UnitTestingExamplesCore_KarieraIT
+﻿namespace UnitTestingExamplesCore_KarieraIT.Services.Interfaces
 {
     public interface IService
     {

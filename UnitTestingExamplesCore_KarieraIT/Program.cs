@@ -1,17 +1,17 @@
 ﻿using System;
+using UnitTestingExamplesCore_KarieraIT.Services;
 
 namespace UnitTestingExamplesCore_KarieraIT
 {
     public class Program
     {
-        public static IService Service { get; set; }
-        public static IRandomService RandomService { get; set; }
-
         public static void Main()
         {
-            Service = new Service();
-            RandomService = new RandomService();
-            Console.WriteLine(Service.Calculate(19.93, RandomService));
+            var service = new Service();
+            var anotherService = new AnotherService();
+            var randomService = new RandomService();
+            Console.WriteLine(service.Calculate(19.93, randomService));
+            Console.WriteLine(anotherService.Calculate(19.93, randomService));
         }
     }
 }

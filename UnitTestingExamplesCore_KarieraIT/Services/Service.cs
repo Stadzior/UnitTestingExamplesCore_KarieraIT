@@ -1,4 +1,6 @@
-﻿namespace UnitTestingExamplesCore_KarieraIT
+﻿using UnitTestingExamplesCore_KarieraIT.Services.Interfaces;
+
+namespace UnitTestingExamplesCore_KarieraIT.Services
 {
     public class Service : IService
     {
