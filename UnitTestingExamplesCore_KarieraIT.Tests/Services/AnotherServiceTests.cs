@@ -5,6 +5,7 @@ using Moq;
 using NUnit.Framework;
 using UnitTestingExamplesCore_KarieraIT.Services;
 using UnitTestingExamplesCore_KarieraIT.Services.Interfaces;
+using UnitTestingExamplesCore_KarieraIT.Tests.FakeObjects;
 
 namespace UnitTestingExamplesCore_KarieraIT.Tests
 {
@@ -16,14 +17,9 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
         public void CalculateTest(double inputValue, double expectedResult)
         {
             var service = new Service();
+            var randomService = new FakeRandomService();
 
-            const double randomValue = 5.0;
-            var randomServiceMock = new Mock<IRandomService>();
-            randomServiceMock
-                .Setup(randomService => randomService.GetRandomValue())
-                .Returns(randomValue);
-
-            var actualResult = service.Calculate(inputValue, randomServiceMock.Object);
+            var actualResult = service.Calculate(inputValue, randomService);
 
             Assert.AreEqual(expectedResult, actualResult);
         }
