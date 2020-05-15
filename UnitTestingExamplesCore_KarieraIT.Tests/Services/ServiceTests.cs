@@ -22,5 +22,34 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestCase(1.0, 0, TestName = "Calculate_PositiveValue_GetRandomValueNotInvoked")]
+        [TestCase(0.0, 1, TestName = "Calculate_Zero_GetRandomValueInvokedOnce")]
+        [TestCase(-1.0, 1, TestName = "Calculate_NegativeValue_GetRandomValueInvokedOnce")]
+        public void CalculateStrictInvocationTest(double inputValue, int expectedResult)
+        {
+            var service = new Service();
+            var randomServiceMock = new Mock<IRandomService>(MockBehavior.Strict);
+            randomServiceMock
+                .Setup(randomService => randomService.GetRandomValue())
+                .Returns(0.0);
+
+            service.Calculate(inputValue, randomServiceMock.Object);
+            
+            randomServiceMock.Verify(randomService => randomService.GetRandomValue(), Times.Exactly(expectedResult));
+        }
+
+        [TestCase(1.0, 0, TestName = "Calculate_PositiveValue_GetRandomValueNotInvoked")]
+        [TestCase(0.0, 1, TestName = "Calculate_Zero_GetRandomValueInvokedOnce")]
+        [TestCase(-1.0, 1, TestName = "Calculate_NegativeValue_GetRandomValueInvokedOnce")]
+        public void CalculateLooseInvocationTest(double inputValue, int expectedResult)
+        {
+            var service = new Service();
+            var randomServiceMock = new Mock<IRandomService>();
+
+            service.Calculate(inputValue, randomServiceMock.Object);
+
+            randomServiceMock.Verify(randomService => randomService.GetRandomValue(), Times.Exactly(expectedResult));
+        }
     }
 }

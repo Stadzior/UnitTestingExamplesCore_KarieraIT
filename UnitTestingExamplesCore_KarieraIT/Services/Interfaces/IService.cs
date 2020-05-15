@@ -2,6 +2,7 @@
 {
     public interface IService
     {
+        double Calculate(double inputValue);
         double Calculate(double inputValue, IRandomService randomService);
     }
 }

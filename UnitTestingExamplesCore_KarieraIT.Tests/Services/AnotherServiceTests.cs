@@ -23,5 +23,19 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
 
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestCase(1.0, 0, TestName = "Calculate_PositiveValue_GetRandomValueNotInvoked")]
+        [TestCase(0.0, 1, TestName = "Calculate_Zero_GetRandomValueInvokedOnce")]
+        [TestCase(-1.0, 1, TestName = "Calculate_NegativeValue_GetRandomValueInvokedOnce")]
+        public void CalculateInvocationTest(double inputValue, int expectedResult)
+        {
+            var service = new Service();
+            var randomService = new FakeRandomService();
+
+            service.Calculate(inputValue, randomService);
+            var actualResult = randomService.GetRandomValueInvocationCount;
+
+           Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
