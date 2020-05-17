@@ -25,7 +25,7 @@ namespace UnitTestingExamplesCore_KarieraIT.Services
             return randomService.GetRandomValue(randomOptions);
         }
         
-        public virtual double ApplyFormula(double inputValue)
+        protected virtual double ApplyFormula(double inputValue)
             => Math.Sqrt(inputValue * 2);
 
         public double CalculateWithFormula(double inputValue)

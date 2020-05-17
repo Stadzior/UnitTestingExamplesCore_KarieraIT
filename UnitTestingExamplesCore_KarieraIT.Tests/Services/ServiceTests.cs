@@ -161,8 +161,8 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
         {
             var serviceMock = new Mock<Service> { CallBase = true };
 
-            serviceMock
-                .Setup(service => service.ApplyFormula(It.IsAny<double>()))
+            serviceMock.Protected()
+                .Setup<double>("ApplyFormula", ItExpr.IsAny<double>())
                 .Returns(applyFormulaResult);                
 
             var actualResult = serviceMock.Object.CalculateWithFormula(inputValue);
