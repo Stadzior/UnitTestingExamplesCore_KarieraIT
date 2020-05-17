@@ -51,6 +51,22 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+        [TestCase(1.0, 5.0, 1.0, TestName = "Calculate_PositiveValueAndRandomServiceWithSeed_InputValuePlusRandomValue")]
+        [TestCase(0.0, 5.0, 5.0, TestName = "Calculate_ZeroAndRandomServiceWithSeed_RandomValue")]
+        [TestCase(-1.0, 5.0, 5.0, TestName = "Calculate_NegativeValueAndRandomServiceWithSeed_RandomValue")]
+        public void CalculateWithSeedTest(double inputValue, double randomValue, double expectedResult)
+        {
+            var service = new Service();
+            var randomServiceMock = new Mock<IRandomService>();
+            randomServiceMock
+                .Setup(randomService => randomService.GetRandomValue(It.IsAny<int>()))
+                .Returns(randomValue);
+
+            var actualResult = service.Calculate(inputValue, randomServiceMock.Object, default);
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
         [TestCase(1.0, 0, TestName = "Calculate_PositiveValueAndRandomService_GetRandomValueNotInvoked")]
         [TestCase(0.0, 1, TestName = "Calculate_ZeroAndRandomService_GetRandomValueInvokedOnce")]
         [TestCase(-1.0, 1, TestName = "Calculate_NegativeValueAndRandomService_GetRandomValueInvokedOnce")]
