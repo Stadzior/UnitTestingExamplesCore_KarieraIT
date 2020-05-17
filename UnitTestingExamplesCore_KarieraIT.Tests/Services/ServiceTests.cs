@@ -136,5 +136,21 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
 
             randomServiceMock.Verify(randomService => randomService.GetRandomValue(), Times.Exactly(expectedResult));
         }
+
+        [TestCase(1.0, 1, 0, TestName = "FullyRandomCalculate_PositiveValue_GetRandomValueInvokedOnceWithIsNegativeFlagSetToFalse")]
+        [TestCase(0.0, 0, 1, TestName = "FullyRandomCalculate_Zero_GetRandomValueInvokedOnceWithIsNegativeFlagSetToTrue")]
+        [TestCase(-1.0, 0, 1, TestName = "FullyRandomCalculate_NegativeValue_GetRandomValueInvokedOnceWithIsNegativeFlagSetToTrue")]
+        public void FullyRandomCalculateInvocationTest(double inputValue, int expectedGetRandomValueInvocationCount, int expectedGetRandomValueNegativeInvocationCount)
+        {
+            var service = new Service();
+            var randomServiceMock = new Mock<IRandomService>();
+
+            var actualResult = service.FullyRandomCalculate(inputValue, randomServiceMock.Object, default);
+
+            randomServiceMock
+                .Verify(randomService => randomService.GetRandomValue(It.Is<RandomOptions>(options => !options.IsNegative)), Times.Exactly(expectedGetRandomValueInvocationCount));
+            randomServiceMock
+                .Verify(randomService => randomService.GetRandomValue(It.Is<RandomOptions>(options => options.IsNegative)), Times.Exactly(expectedGetRandomValueNegativeInvocationCount));
+        }
     }
 }

@@ -4,6 +4,6 @@
     {
         double GetRandomValue();
         double GetRandomValue(int seed);
-        double GetRandomValue(int seed, bool isNegative);
+        double GetRandomValue(RandomOptions randomOptions);
     }
 }

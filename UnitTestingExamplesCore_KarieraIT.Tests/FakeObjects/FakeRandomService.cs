@@ -6,7 +6,7 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests.FakeObjects
     {
         public int GetRandomValueInvocationCount { get; private set; }
         public int GetRandomValueWithSeedInvocationCount { get; private set; }
-        public int GetRandomValueWithSeedAndIsNegativeInvocationCount { get; private set; }
+        public int GetRandomValueWithRandomOptionsInvocationCount { get; private set; }
 
         public void ClearCounter()
             => GetRandomValueInvocationCount = 0;
@@ -23,9 +23,9 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests.FakeObjects
             return 5.0;
         }
 
-        public double GetRandomValue(int seed, bool isNegative)
+        public double GetRandomValue(RandomOptions randomOptions)
         {
-            GetRandomValueWithSeedAndIsNegativeInvocationCount++;
+            GetRandomValueWithRandomOptionsInvocationCount++;
             return 5.0;
         }
     }

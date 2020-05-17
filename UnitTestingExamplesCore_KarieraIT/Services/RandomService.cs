@@ -11,10 +11,10 @@ namespace UnitTestingExamplesCore_KarieraIT.Services
         public double GetRandomValue(int seed)
             => new Random(seed).NextDouble();
 
-        public double GetRandomValue(int seed, bool isNegative)
+        public double GetRandomValue(RandomOptions randomOptions)
         {
-            var result = GetRandomValue(seed);
-            result = isNegative ? -result : result;
+            var result = GetRandomValue(randomOptions.Seed);
+            result = randomOptions.IsNegative ? -result : result;
             return result;
         }
     }
