@@ -13,7 +13,7 @@ namespace UnitTestingExamplesCore_KarieraIT.Services
         public double Calculate(double inputValue, IRandomService randomService, int seed)
             => inputValue > 0.0 ? inputValue : randomService.GetRandomValue(seed);
 
-        public double Calculate(double inputValue, IRandomService randomService, int seed, bool isNegative)
-            => inputValue > 0.0 ? inputValue : randomService.GetRandomValue(seed, isNegative);
+        public double FullyRandomCalculate(double inputValue, IRandomService randomService, int seed)
+            => inputValue > 0.0 ? randomService.GetRandomValue(seed, false) : randomService.GetRandomValue(seed, true);
     }
 }
