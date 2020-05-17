@@ -9,5 +9,8 @@ namespace UnitTestingExamplesCore_KarieraIT.Services
 
         public double Calculate(double inputValue, IRandomService randomService)
             => inputValue > 0.0 ? inputValue : randomService.GetRandomValue();
+
+        public double Calculate(double inputValue, IRandomService randomService, int seed)
+            => inputValue > 0.0 ? inputValue : randomService.GetRandomValue(seed);
     }
 }

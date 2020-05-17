@@ -7,5 +7,8 @@ namespace UnitTestingExamplesCore_KarieraIT.Services
     {
         public double GetRandomValue()
             => new Random().NextDouble();
+
+        public double GetRandomValue(int seed)
+            => new Random(seed).NextDouble();
     }
 }
