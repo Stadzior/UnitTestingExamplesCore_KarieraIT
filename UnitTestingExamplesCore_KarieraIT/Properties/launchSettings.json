@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "UnitTestingExamplesCore_KarieraIT": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DefaultValue": "10,0"
+      }
+    }
+  }
+}

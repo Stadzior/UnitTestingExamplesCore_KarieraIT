@@ -14,6 +14,8 @@ namespace UnitTestingExamplesCore_KarieraIT
             Console.WriteLine(service.Calculate(19.93, randomService, 123));
             Console.WriteLine(service.FullyRandomCalculate(19.93, randomService, 123));
             Console.WriteLine(service.FullyRandomCalculate(-19.93, randomService, 123));
+            Console.WriteLine(service.CalculateWithFormula(19.93));
+            Console.WriteLine(service.CalculateWithEnvironmentDefault(0.0));
         }
     }
 }

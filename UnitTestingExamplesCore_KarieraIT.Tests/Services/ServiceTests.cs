@@ -154,9 +154,9 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
                 .Verify(randomService => randomService.GetRandomValue(It.Is<RandomOptions>(options => options.IsNegative)), Times.Exactly(expectedGetRandomValueNegativeInvocationCount));
         }
 
-        [TestCase(1.0, 5.0, 5.0, TestName = "CalculateWithFormula_PositiveValue_InputValue")]
-        [TestCase(0.0, 5.0, 0.0, TestName = "CalculateWithFormula_Zero_ApplyFormulaValue")]
-        [TestCase(-1.0, 5.0, 0.0, TestName = "CalculateWithFormula_Negative_ApplyFormulaValue")]
+        [TestCase(1.0, 5.0, 5.0, TestName = "CalculateWithFormula_PositiveValue_ApplyFormulaValue")]
+        [TestCase(0.0, 5.0, 0.0, TestName = "CalculateWithFormula_Zero_Zero")]
+        [TestCase(-1.0, 5.0, 0.0, TestName = "CalculateWithFormula_NegativeValue_Zero")]
         public void CalculateWithFormulaTest(double inputValue, double applyFormulaResult, double expectedResult)
         {
             var serviceMock = new Mock<Service> { CallBase = true };
@@ -166,6 +166,22 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
                 .Returns(applyFormulaResult);                
 
             var actualResult = serviceMock.Object.CalculateWithFormula(inputValue);
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestCase(1.0, 5.0, 1.0, TestName = "CalculateWithEnvironmentDefault_PositiveValue_InputValue")]
+        [TestCase(0.0, 5.0, 5.0, TestName = "CalculateWithEnvironmentDefault_Zero_EnvironmentDefaultValue")]
+        [TestCase(-1.0, 5.0, 5.0, TestName = "CalculateWithEnvironmentDefault_NegativeValue_EnvironmentDefaultValue")]
+        public void CalculateWithEnvironmentDefault(double inputValue, double environmentDefaultValue, double expectedResult)
+        {
+            var serviceMock = new Mock<Service> { CallBase = true };
+
+            serviceMock.Protected()
+                .Setup<double>("GetDefaultValue")
+                .Returns(environmentDefaultValue);
+
+            var actualResult = serviceMock.Object.CalculateWithEnvironmentDefault(inputValue);
 
             Assert.AreEqual(expectedResult, actualResult);
         }

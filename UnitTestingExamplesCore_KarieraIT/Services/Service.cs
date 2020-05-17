@@ -30,5 +30,11 @@ namespace UnitTestingExamplesCore_KarieraIT.Services
 
         public double CalculateWithFormula(double inputValue)
             => inputValue > 0.0 ? ApplyFormula(inputValue) : 0.0;
+
+        protected virtual double GetDefaultValue()
+            => double.Parse(Environment.GetEnvironmentVariable("DefaultValue"));
+
+        public double CalculateWithEnvironmentDefault(double inputValue)
+            => inputValue > 0.0 ? inputValue : GetDefaultValue();
     }
 }
