@@ -8,14 +8,13 @@ namespace UnitTestingExamplesCore_KarieraIT.Services
         public double GetRandomValue()
             => new Random().NextDouble();
 
-        public double GetRandomValue(int seed)
+        public virtual double GetRandomValue(int seed)
             => new Random(seed).NextDouble();
 
         public double GetRandomValue(RandomOptions randomOptions)
         {
             var result = GetRandomValue(randomOptions.Seed);
-            result = randomOptions.IsNegative ? -result : result;
-            return result;
+            return randomOptions.IsNegative ? -result : result;
         }
     }
 }

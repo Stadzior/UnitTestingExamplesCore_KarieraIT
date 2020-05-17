@@ -1,4 +1,5 @@
-﻿using UnitTestingExamplesCore_KarieraIT.Services.Interfaces;
+﻿using System;
+using UnitTestingExamplesCore_KarieraIT.Services.Interfaces;
 
 namespace UnitTestingExamplesCore_KarieraIT.Services
 {
@@ -23,5 +24,11 @@ namespace UnitTestingExamplesCore_KarieraIT.Services
 
             return randomService.GetRandomValue(randomOptions);
         }
+        
+        public virtual double ApplyFormula(double inputValue)
+            => Math.Sqrt(inputValue * 2);
+
+        public double CalculateWithFormula(double inputValue)
+            => inputValue > 0.0 ? ApplyFormula(inputValue) : 0.0;
     }
 }
