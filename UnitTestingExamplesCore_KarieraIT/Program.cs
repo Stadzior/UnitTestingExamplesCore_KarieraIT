@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using UnitTestingExamplesCore_KarieraIT.Data;
 using UnitTestingExamplesCore_KarieraIT.Services;
 
 namespace UnitTestingExamplesCore_KarieraIT
@@ -20,12 +17,8 @@ namespace UnitTestingExamplesCore_KarieraIT
             Console.WriteLine(service.CalculateWithFormula(19.93));
             Console.WriteLine(service.CalculateWithEnvironmentDefault(0.0));
 
-            using var context = new FooBarDbContext();
-            var bars = context.Bars
-                .Where(bar => bar.FooId < 3)
-                .Include(bar => bar.Foo);
-
-            foreach (var bar in bars)
+            var barService = new BarService();
+            foreach (var bar in barService.GetSpecificBars())
                 Console.WriteLine($"BAR id:{bar.Id}, name:{bar.Name}, foo:{bar.Foo.Name}");
         }
     }
