@@ -3,7 +3,7 @@ using UnitTestingExamplesCore_KarieraIT.Data.Entities;
 
 namespace UnitTestingExamplesCore_KarieraIT.Data
 {
-    public class FooBarDbContext : DbContext
+    public class FooBarDbContext : DbContext, IFooBarDbContext
     {
         private const string ConnectionString = "Server=.\\MSSQL2016DEV;Database=FooBarDB;Trusted_Connection=True;";
         public DbSet<Foo> Foos { get; set; }

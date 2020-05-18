@@ -5,6 +5,6 @@ namespace UnitTestingExamplesCore_KarieraIT.Services.Interfaces
 {
     public interface IBarService
     {
-        IEnumerable<Bar> GetSpecificBars();
+        IList<Bar> GetSpecificBars();
     }
 }
