@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestingExamplesCore_Kar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestingExamplesCore_KarieraIT.Data", "UnitTestingExamplesCore_KarieraIT.Data\UnitTestingExamplesCore_KarieraIT.Data.csproj", "{06D86E0E-023E-4D40-B5BF-4B8A704B9B9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestingExamplesCore_KarieraIT.Domain", "UnitTestingExamplesCore_KarieraIT.Domain\UnitTestingExamplesCore_KarieraIT.Domain.csproj", "{D550F167-1798-4EA7-9E82-9AF249EA02F5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{06D86E0E-023E-4D40-B5BF-4B8A704B9B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06D86E0E-023E-4D40-B5BF-4B8A704B9B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06D86E0E-023E-4D40-B5BF-4B8A704B9B9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D550F167-1798-4EA7-9E82-9AF249EA02F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D550F167-1798-4EA7-9E82-9AF249EA02F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D550F167-1798-4EA7-9E82-9AF249EA02F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D550F167-1798-4EA7-9E82-9AF249EA02F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

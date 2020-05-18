@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UnitTestingExamplesCore_KarieraIT.Data\UnitTestingExamplesCore_KarieraIT.Data.csproj" />
+  </ItemGroup>
+
 </Project>
