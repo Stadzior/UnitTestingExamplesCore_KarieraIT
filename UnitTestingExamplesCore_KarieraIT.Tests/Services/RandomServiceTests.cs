@@ -6,7 +6,7 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests.Services
 {
     public class RandomServiceTests
     {
-        private static object[] _getRandomValueSource =
+        private static readonly object[] _getRandomValueSource =
         {
             new TestCaseData(new RandomOptions
             {

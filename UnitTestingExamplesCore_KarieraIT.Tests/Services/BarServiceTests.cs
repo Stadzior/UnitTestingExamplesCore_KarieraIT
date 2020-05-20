@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 using UnitTestingExamplesCore_KarieraIT.Data;
@@ -11,7 +12,7 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests.Services
 {
     public class BarServiceTests
     {
-        private static object[] _getSpecificBarsSource =
+        private static readonly object[] _getSpecificBarsSource =
         {
             new TestCaseData(new List<Bar>(), new List<Bar>()).SetName("GetSpecificBars_NoData_EmptyList"),
             new TestCaseData(new List<Bar>
@@ -97,6 +98,8 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests.Services
             var actualResult = barService.GetSpecificBars();
 
             Assert.That(expectedResult.SequenceEqual(actualResult));
+
+            actualResult.Should().BeEquivalentTo(expectedResult);
         }
     }
 }

@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Moq;
 using Moq.Protected;
 using NUnit.Framework;
@@ -79,7 +80,7 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
 
             var actualResult = service.Calculate(inputValue, randomServiceMock.Object, default);
 
-            Assert.AreEqual(expectedResult, actualResult);
+            actualResult.Should().Be(expectedResult, $"input value is {inputValue}");
         }
 
         [TestCase(1.0, 0, TestName = "Calculate_PositiveValueAndRandomService_GetRandomValueNotInvoked")]
@@ -122,7 +123,7 @@ namespace UnitTestingExamplesCore_KarieraIT.Tests
             service.Calculate(inputValue, randomService);
             var actualResult = randomService.GetRandomValueInvocationCount;
 
-            Assert.AreEqual(expectedResult, actualResult);
+            actualResult.Should().Be(expectedResult);
         }
 
         [TestCase(1.0, 0, TestName = "Calculate_PositiveValueAndRandomServiceWithSeed_GetRandomValueNotInvoked")]
